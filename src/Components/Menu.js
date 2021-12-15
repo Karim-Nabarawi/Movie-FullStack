@@ -11,8 +11,8 @@ const Menu = () => {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink to="/geners" className="nav-link">
-                Geners
+              <NavLink to="/genres" className="nav-link">
+                Genres
               </NavLink>
             </li>
           </ul>

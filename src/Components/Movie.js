@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Movie = ({ movieData }) => {
@@ -7,12 +7,12 @@ const Movie = ({ movieData }) => {
 
   return (
     <MovieCard>
-      <NavLink to={buildLink}>
+      <Link to={buildLink}>
         <MovieImg src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`} alt="Poster" />
-      </NavLink>
-      <NavLink to={buildLink}>
+      </Link>
+      <Link to={buildLink}>
         <MovieTitle>{movieData.title}</MovieTitle>
-      </NavLink>
+      </Link>
     </MovieCard>
   );
 };
