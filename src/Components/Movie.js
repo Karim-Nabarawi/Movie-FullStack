@@ -7,7 +7,7 @@ const Movie = ({ movieData }) => {
   return (
     <MovieCard>
       <a href={buildLink}>
-        <MovieImg src={movieData.poster} alt="Poster" />
+        <MovieImg src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`} alt="Poster" />
       </a>
       <a href={buildLink}>
         <MovieTitle>{movieData.title}</MovieTitle>
