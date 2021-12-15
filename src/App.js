@@ -14,7 +14,7 @@ function App() {
   const { popular, upcoming } = useSelector((state) => state.movies);
 
   return (
-    <div className="App">
+    <div className="container">
       <h3>Popular</h3>
       <MovieList MoviesList={popular} />
       <h3>Upcoming Releases</h3>
