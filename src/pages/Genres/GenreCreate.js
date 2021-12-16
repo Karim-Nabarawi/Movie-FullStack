@@ -10,23 +10,26 @@ const GenreCreate = () => {
       <h3>Create Genre</h3>
       <Formik
         initialValues={{ name: "" }}
-        onSubmit={(value) => {
+        onSubmit={async (value) => {
           //Form Posted
+          await new Promise((r) => setTimeout(r, 1));
           console.log(value);
         }}
         validationSchema={Yup.object({
           name: Yup.string().required("This field is required").firstLetterUppercase(),
         })}
       >
-        <Form>
-          <TextField field="name" displayName="Name:" />
-          <button className="btn btn-primary" type="submit">
-            Save changes
-          </button>
-          <Link className="btn btn-secondary" to="/genres">
-            Cancel
-          </Link>
-        </Form>
+        {(props) => (
+          <Form>
+            <TextField field="name" displayName="Name:" />
+            <button disabled={props.isSubmitting} className="btn btn-primary" type="submit">
+              Save changes
+            </button>
+            <Link className="btn btn-secondary" to="/genres">
+              Cancel
+            </Link>
+          </Form>
+        )}
       </Formik>
     </div>
   );
