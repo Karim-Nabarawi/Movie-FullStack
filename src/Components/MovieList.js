@@ -16,8 +16,11 @@ const MovieList = ({ MoviesList }) => {
 export default MovieList;
 
 const MovieListContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  align-items: center;
+  justify-content: center;
+  grid-column-gap: 50px;
+  grid-row-gap: 20px;
   align-items: center;
 `;
