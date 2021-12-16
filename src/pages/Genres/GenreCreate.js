@@ -15,7 +15,7 @@ const GenreCreate = () => {
           console.log(value);
         }}
         validationSchema={Yup.object({
-          name: Yup.string().required("This field is required"),
+          name: Yup.string().required("This field is required").firstLetterUppercase(),
         })}
       >
         <Form>
