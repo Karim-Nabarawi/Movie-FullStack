@@ -20,6 +20,10 @@ const GlobalStyles = createGlobalStyle`
     body {
         background: #e9e9e9;
     }
+
+    form > a {
+        margin-left: 10px;
+    }
 `;
 
 export default GlobalStyles;
