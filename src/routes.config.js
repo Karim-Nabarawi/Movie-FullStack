@@ -4,6 +4,7 @@ import GenresMain from "./pages/Genres/GenresMain";
 import GenreEdit from "./pages/Genres/GenreEdit";
 import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
+import FilterMovies from "./pages/FilterMovies";
 
 const GetRoutes = () => {
   const routes = useRoutes([
@@ -16,6 +17,7 @@ const GetRoutes = () => {
         { path: "edit/:id", element: <GenreEdit /> },
       ],
     },
+    { path: "search/", element: <FilterMovies /> },
     { path: "*", element: <PageNotFound /> },
   ]);
   return routes;
