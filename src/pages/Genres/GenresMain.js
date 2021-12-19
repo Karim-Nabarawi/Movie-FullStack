@@ -47,7 +47,7 @@ const GenresMain = () => {
               <tr key={genre.id}>
                 <td>{genre.name}</td>
                 <td className="alignRight">
-                  <Link to={`/genres/${genre.id}`} className="btn btn-success">
+                  <Link to={`/genres/edit/${genre.id}`} className="btn btn-success">
                     Edit
                   </Link>
                   <button className="btn btn-danger">Delete</button>
