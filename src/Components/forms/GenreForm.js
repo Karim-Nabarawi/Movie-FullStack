@@ -10,7 +10,7 @@ const GenreForm = ({ initialValues, onSubmit }) => {
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={Yup.object({
-        name: Yup.string().required("This field is required").firstLetterUppercase(),
+        name: Yup.string().required("This field is required").max(50, "Max character is 50").firstLetterUppercase(),
       })}
     >
       <Form>
