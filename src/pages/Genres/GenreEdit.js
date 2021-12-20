@@ -14,7 +14,6 @@ const GenreEdit = () => {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    console.log(`${genresURL()}/${id}`);
     axios.get(`${genresURL()}/${id}`).then((res) => {
       console.log(res);
       setGenre(res.data.name);

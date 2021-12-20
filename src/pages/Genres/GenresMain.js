@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { genresURL } from "../../Api";
+import CustomConfirm from "../../Components/utils/CustomConfirm";
 import GenericLoading from "../../Components/utils/GenericLoading";
 import Pagination from "../../Components/utils/Pagination";
 import RecordsPerPage from "../../Components/utils/RecordsPerPage";
@@ -14,12 +15,26 @@ const GenresMain = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    console.log(genresURL());
+    loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, recordsPerPage]);
+
+  const loadData = () => {
     axios.get(genresURL(), { params: { page, recordsPerPage } }).then((res) => {
       setTotalAmountOfPages(Math.ceil(parseInt(res.headers["totalamountsofrecords"], 10) / recordsPerPage));
       setGenres(res.data);
     });
-  }, [page, recordsPerPage]);
+  };
+
+  const deleteGenre = async (id) => {
+    try {
+      await axios.delete(`${genresURL()}/${id}`);
+      loadData();
+    } catch (error) {
+      if (error && error.response) console.log(error.response.data);
+    }
+  };
+
   return (
     <>
       <h3>Genres</h3>
@@ -50,7 +65,9 @@ const GenresMain = () => {
                   <Link to={`/genres/edit/${genre.id}`} className="btn btn-success">
                     Edit
                   </Link>
-                  <button className="btn btn-danger">Delete</button>
+                  <button className="btn btn-danger" onClick={() => CustomConfirm(() => deleteGenre(genre.id))}>
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
