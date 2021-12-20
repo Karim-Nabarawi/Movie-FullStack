@@ -1,25 +1,25 @@
+import { Form, Formik } from "formik";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import TextField from "../../Components/forms/TextField";
+import TextField from "./TextField";
 
-const GenreForm = ({ initialValues, onSubmit }) => {
+const ActorForm = ({ initialValues, onSubmit }) => {
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={Yup.object({
-        name: Yup.string().required("This field is required").max(50, "Max character is 50").firstLetterUppercase(),
+        name: Yup.string().required("This field is required").firstLetterUppercase(),
       })}
     >
       {(formikProps) => (
         <Form>
-          <TextField field="name" displayName="Name:" />
+          <TextField displayName="Name" field="name" />
           <button className="btn btn-primary" type="submit" disabled={formikProps.isSubmitting}>
             Save changes
           </button>
-          <Link className="btn btn-secondary" to="/genres">
+          <Link className="btn btn-secondary" to="/actors">
             Cancel
           </Link>
         </Form>
@@ -27,4 +27,4 @@ const GenreForm = ({ initialValues, onSubmit }) => {
     </Formik>
   );
 };
-export default GenreForm;
+export default ActorForm;
