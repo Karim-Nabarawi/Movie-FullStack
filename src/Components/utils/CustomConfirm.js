@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 
-const CustomConfirm = ({ onConfirm, title = "Are you sure?", confirmButtonText = "Delete" }) => {
+const CustomConfirm = (onConfirm, title = "Are you sure?", confirmButtonText = "Delete") => {
+  console.log(title);
   Swal.fire({
     title,
     confirmButtonText,
