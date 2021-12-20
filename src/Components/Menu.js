@@ -15,6 +15,11 @@ const Menu = () => {
                 Genres
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/search" className="nav-link">
+                Search
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

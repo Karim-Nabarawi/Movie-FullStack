@@ -1,36 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Form, Formik } from "formik";
-import * as Yup from "yup";
-import TextField from "../../Components/forms/TextField";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { genresURL } from "../../Api";
+import GenreForm from "../../Components/forms/GenreForm";
+import DisplayErrors from "../../Components/utils/DisplayErrors";
 
 const GenreCreate = () => {
+  const navigation = useNavigate();
+
+  const [errors, setErrors] = useState([]);
+
+  const create = async (genre) => {
+    try {
+      await axios.post(genresURL(), genre);
+      navigation("/genres");
+    } catch (error) {
+      if (error && error.response) {
+        setErrors(error.response.data);
+      }
+    }
+  };
+
   return (
     <div className="te">
       <h3>Create Genre</h3>
-      <Formik
+      <DisplayErrors errors={errors} />
+      <GenreForm
         initialValues={{ name: "" }}
         onSubmit={async (value) => {
           //Form Posted
-          await new Promise((r) => setTimeout(r, 1));
-          console.log(value);
+          await create(value);
         }}
-        validationSchema={Yup.object({
-          name: Yup.string().required("This field is required").firstLetterUppercase(),
-        })}
-      >
-        {(props) => (
-          <Form>
-            <TextField field="name" displayName="Name:" />
-            <button disabled={props.isSubmitting} className="btn btn-primary" type="submit">
-              Save changes
-            </button>
-            <Link className="btn btn-secondary" to="/genres">
-              Cancel
-            </Link>
-          </Form>
-        )}
-      </Formik>
+      />
     </div>
   );
 };
