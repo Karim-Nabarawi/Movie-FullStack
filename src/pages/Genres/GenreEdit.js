@@ -6,7 +6,7 @@ import EditEntity from "../../Components/utils/EditEntity";
 const GenreEdit = () => {
   return (
     <div className="rr">
-      <EditEntity url={genresURL()} entityName="Genre">
+      <EditEntity url={genresURL()} entityName="Genre" indexURL="/genres">
         {(entity, edit) => (
           <GenreForm
             initialValues={{ name: entity }}
