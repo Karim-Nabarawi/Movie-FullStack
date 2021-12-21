@@ -3,6 +3,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import DateField from "./DateField";
+import ImageField from "./ImageField";
+import MarkDownField from "./MarkDownField";
 import TextField from "./TextField";
 
 const ActorForm = ({ initialValues, onSubmit }) => {
@@ -19,6 +21,8 @@ const ActorForm = ({ initialValues, onSubmit }) => {
         <Form>
           <TextField displayName="Name" field="name" />
           <DateField displayName="Date of Birth" field="dateOfBirth" />
+          <ImageField displayName="Picture" field="picture" imageURL={initialValues.pictureURL} />
+          <MarkDownField displayName="Biography" field="biography" />
           <button className="btn btn-primary" type="submit" disabled={formikProps.isSubmitting}>
             Save changes
           </button>

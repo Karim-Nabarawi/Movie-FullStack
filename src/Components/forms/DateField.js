@@ -1,8 +1,8 @@
-import { useFormikContext } from "formik";
+import { ErrorMessage, useFormikContext } from "formik";
 import React from "react";
 
 const DateField = ({ field, displayName }) => {
-  const { values, validateForm, touched, errors } = useFormikContext();
+  const { values, validateForm } = useFormikContext();
   return (
     <div className="mb-3">
       <label htmlFor={field}>{displayName}</label>
@@ -18,7 +18,7 @@ const DateField = ({ field, displayName }) => {
           validateForm();
         }}
       />
-      {touched[field] && errors[field] ? <div className="text-danger">{errors[field].toString()}</div> : null}
+      <ErrorMessage name={field}>{(msg) => <div className="text-danger">{msg}</div>}</ErrorMessage>
     </div>
   );
 };
