@@ -2,6 +2,7 @@ import { Form, Formik } from "formik";
 import React from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import DateField from "./DateField";
 import TextField from "./TextField";
 
 const ActorForm = ({ initialValues, onSubmit }) => {
@@ -11,11 +12,13 @@ const ActorForm = ({ initialValues, onSubmit }) => {
       onSubmit={onSubmit}
       validationSchema={Yup.object({
         name: Yup.string().required("This field is required").firstLetterUppercase(),
+        dateOfBirth: Yup.date().nullable().required("This field is required"),
       })}
     >
       {(formikProps) => (
         <Form>
           <TextField displayName="Name" field="name" />
+          <DateField displayName="Date of Birth" field="dateOfBirth" />
           <button className="btn btn-primary" type="submit" disabled={formikProps.isSubmitting}>
             Save changes
           </button>
