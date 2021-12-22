@@ -8,3 +8,4 @@ const upComingMovies = `upcoming?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&
 export const popularMoviesURL = () => `${base_url}${popularMovies}`;
 export const upcomingMoviesURL = () => `${base_url}${upComingMovies}`;
 export const genresURL = () => `${server_base_url}/genres`;
+export const actorsURL = () => `${server_base_url}/actors`;

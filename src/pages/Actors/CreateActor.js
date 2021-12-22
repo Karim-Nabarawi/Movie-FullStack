@@ -1,11 +1,39 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { actorsURL } from "../../Api";
 import ActorForm from "../../Components/forms/ActorForm";
+import DisplayErrors from "../../Components/utils/DisplayErrors";
+import { convertActorToFormData } from "../../Components/utils/formDataUtils";
 
 const CreateActor = () => {
+  const [errors, setErrors] = useState([]);
+  const navigation = useNavigate();
+
+  const create = async (actor) => {
+    try {
+      const configuration = {
+        method: "post",
+        url: actorsURL(),
+        data: convertActorToFormData(actor),
+        headers: { Accept: "*/*" },
+      };
+
+      await axios(configuration);
+      navigation("/actors");
+    } catch (error) {
+      if (error && error.response) console.log("ff" + error.response.data); // setErrors(error.response.data);
+    }
+  };
+
   return (
     <>
       <h3>Create Actor</h3>
-      <ActorForm initialValues={{ name: "", dateOfBirth: undefined }} onSubmit={(values) => console.log(values)} />
+      <DisplayErrors errors={errors} />
+      <ActorForm
+        initialValues={{ name: "", dateOfBirth: undefined }}
+        onSubmit={async (values) => await create(values)}
+      />
     </>
   );
 };

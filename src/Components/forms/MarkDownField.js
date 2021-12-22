@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const MarkDownField = ({ field, displayName }) => {
   const { values } = useFormikContext();
-  console.log(field);
   return (
     <MarkdownFormContainer className="mb-3">
       <div>
