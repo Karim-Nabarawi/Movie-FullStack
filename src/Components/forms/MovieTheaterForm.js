@@ -1,8 +1,10 @@
 import { Form, Formik } from "formik";
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import * as Yup from "yup";
 import TextField from "../Fields/TextField";
+import Map from "../utils/Map";
 
 const MovieTheaterForm = ({ initialValues, onSubmit }) => {
   return (
@@ -13,18 +15,25 @@ const MovieTheaterForm = ({ initialValues, onSubmit }) => {
         name: Yup.string().required("This field is required").firstLetterUppercase(),
       })}
     >
-      {(formikProps) => {
+      {(formikProps) => (
         <Form>
-          <TextField displayName="Name" field="name" />
+          <TextField field="name" displayName="Name:" />
+          <MapContainer>
+            <Map />
+          </MapContainer>
           <button className="btn btn-primary" type="submit" disabled={formikProps.isSubmitting}>
             Save changes
           </button>
           <Link className="btn btn-secondary" to="/movietheaters">
             Cancel
           </Link>
-        </Form>;
-      }}
+        </Form>
+      )}
     </Formik>
   );
 };
 export default MovieTheaterForm;
+
+const MapContainer = styled.div`
+  margin-bottom: 16px;
+`;

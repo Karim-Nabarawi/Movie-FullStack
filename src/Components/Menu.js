@@ -21,7 +21,7 @@ const Menu = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/actors" className="nav-link">
+              <NavLink to="/movietheater" className="nav-link">
                 Movie Theater
               </NavLink>
             </li>
