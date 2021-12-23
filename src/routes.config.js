@@ -5,6 +5,9 @@ import GenreEdit from "./pages/Genres/GenreEdit";
 import IndexActors from "./pages/Actors/IndexActors";
 import CreateActor from "./pages/Actors/CreateActor";
 import EditActor from "./pages/Actors/EditActor";
+import IndexMovieTheaters from "./pages/MovieTheaters/IndexMovieTheaters";
+import CreateMovieTheater from "./pages/MovieTheaters/CreateMovieTheater";
+import EditMovieTheater from "./pages/MovieTheaters/EditMovieTheater";
 import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
 import FilterMovies from "./pages/FilterMovies";
@@ -26,6 +29,14 @@ const GetRoutes = () => {
         { path: "", element: <IndexActors /> },
         { path: "create", element: <CreateActor /> },
         { path: "edit/:id", element: <EditActor /> },
+      ],
+    },
+    {
+      path: "movietheater/",
+      children: [
+        { path: "", element: <IndexMovieTheaters /> },
+        { path: "create", element: <CreateMovieTheater /> },
+        { path: "edit/:id", element: <EditMovieTheater /> },
       ],
     },
     { path: "search/", element: <FilterMovies /> },

@@ -21,6 +21,11 @@ const Menu = () => {
               </NavLink>
             </li>
             <li className="nav-item">
+              <NavLink to="/actors" className="nav-link">
+                Movie Theater
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink to="/search" className="nav-link">
                 Search
               </NavLink>
