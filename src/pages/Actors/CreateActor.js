@@ -18,7 +18,7 @@ const CreateActor = () => {
         data: convertActorToFormData(actor),
         headers: { "Content-Type": "multipart/form-data" },
       };
-
+      console.log(configuration.data);
       await axios(configuration);
       navigation("/actors");
     } catch (error) {
