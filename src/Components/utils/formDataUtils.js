@@ -1,9 +1,9 @@
 export const convertActorToFormData = (actor) => {
-  const formData = {};
-  formData["name"] = actor.name;
-  if (actor.biography) formData["biography"] = actor.biography;
-  if (actor.dateOfBirth) formData["dateOfBirth"] = formatDate(actor.dateOfBirth);
-  if (actor.picture) formData["picture"] = actor.picture;
+  const formData = new FormData();
+  formData.append("name", actor.name);
+  if (actor.biography) formData["biography"] = formData.append("biography", actor.biography);
+  if (actor.dateOfBirth) formData["dateOfBirth"] = formData.append("dateOfBirth", formatDate(actor.dateOfBirth));
+  if (actor.picture) formData.append("picture", actor.picture);
 
   return formData;
 };

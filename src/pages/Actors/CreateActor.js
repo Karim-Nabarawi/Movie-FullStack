@@ -16,13 +16,13 @@ const CreateActor = () => {
         method: "post",
         url: actorsURL(),
         data: convertActorToFormData(actor),
-        headers: { Accept: "*/*" },
+        headers: { "Content-Type": "multipart/form-data" },
       };
 
       await axios(configuration);
       navigation("/actors");
     } catch (error) {
-      if (error && error.response) console.log("ff" + error.response.data); // setErrors(error.response.data);
+      if (error && error.response) setErrors(error.response.data);
     }
   };
 
