@@ -2,10 +2,10 @@ import { Form, Formik } from "formik";
 import React from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import DateField from "./DateField";
-import ImageField from "./ImageField";
-import MarkDownField from "./MarkDownField";
-import TextField from "./TextField";
+import DateField from "../Fields/DateField";
+import ImageField from "../Fields/ImageField";
+import MarkDownField from "../Fields/MarkDownField";
+import TextField from "../Fields/TextField";
 
 const ActorForm = ({ initialValues, onSubmit }) => {
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import TextField from "../../Components/forms/TextField";
+import TextField from "../../Components/Fields/TextField";
 
 const GenreForm = ({ initialValues, onSubmit }) => {
   return (

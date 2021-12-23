@@ -5,18 +5,16 @@ import EditEntity from "../../Components/utils/EditEntity";
 
 const GenreEdit = () => {
   return (
-    <div className="rr">
-      <EditEntity url={genresURL()} entityName="Genre" indexURL="/genres">
-        {(entity, edit) => (
-          <GenreForm
-            initialValues={{ name: entity }}
-            onSubmit={async (value) => {
-              await edit(value);
-            }}
-          />
-        )}
-      </EditEntity>
-    </div>
+    <EditEntity url={genresURL()} entityName="Genre" indexURL="/genres">
+      {(entity, edit) => (
+        <GenreForm
+          initialValues={{ name: entity.name }}
+          onSubmit={async (value) => {
+            await edit(value);
+          }}
+        />
+      )}
+    </EditEntity>
   );
 };
 export default GenreEdit;

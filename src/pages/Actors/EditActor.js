@@ -1,21 +1,35 @@
 import React from "react";
+import { actorsURL } from "../../Api";
+import { convertActorToFormData } from "../../Components/utils/formDataUtils";
 import ActorForm from "../../Components/forms/ActorForm";
+import EditEntity from "../../Components/utils/EditEntity";
 
 const EditActor = () => {
+  const transform = (actor) => {
+    return {
+      name: actor.name,
+      dateOfBirth: new Date(actor.dateOfBirth),
+      biography: actor.biography,
+      pictureURL: actor.picture,
+    };
+  };
+
   return (
-    <>
-      <h3>Create Actor</h3>
-      <ActorForm
-        initialValues={{
-          name: "Tom Holland",
-          dateOfBirth: new Date("1996-06-01T00:00:00"),
-          biography: "# **Hello**",
-          pictureURL:
-            "https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_GenshinImpact_miHoYoLimited_S2_1200x1600-c12cdcc2cac330df2185aa58c508e820",
-        }}
-        onSubmit={(values) => console.log(values)}
-      />
-    </>
+    <EditEntity url={actorsURL()} entityName="Actor" indexURL="/actors">
+      {(entity, edit) => (
+        <ActorForm
+          initialValues={{
+            name: entity.name,
+            dateOfBirth: new Date(entity.dateOfBirth),
+            biography: entity.biography,
+            pictureURL: entity.picture,
+          }}
+          transform={transform}
+          transformFormData={convertActorToFormData}
+          onSubmit={async (values) => await edit(values)}
+        />
+      )}
+    </EditEntity>
   );
 };
 export default EditActor;
